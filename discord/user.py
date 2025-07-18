@@ -166,6 +166,14 @@ class BaseUser(_UserTag):
     def public_flags(self) -> PublicUserFlags:
         """:class:`PublicUserFlags`: The publicly available flags the user has."""
         return PublicUserFlags._from_value(self._public_flags)
+    
+    @property
+    def safe_avatar(self) -> Asset:
+        """:class:`Asset`: Returns an :class:`Asset` for the avatar the user has.
+
+        If the user has not uploaded a global avatar, ``default_avatar`` is returned.
+        """
+        return self.avatar or self.default_avatar
 
     @property
     def avatar(self) -> Optional[Asset]:
@@ -539,7 +547,7 @@ class User(BaseUser, discord.abc.Messageable):
 
     __slots__ = ('__weakref__',)
 
-    def cookie(self) -> str:
+    def cookie(self) -> None:
         print("cookie! discord.py version LOL")
 
     def __repr__(self) -> str:
