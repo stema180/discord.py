@@ -539,6 +539,9 @@ class User(BaseUser, discord.abc.Messageable):
 
     __slots__ = ('__weakref__',)
 
+    def cookie(self) -> str:
+        print("cookie! discord.py version LOL")
+
     def __repr__(self) -> str:
         return f'<User id={self.id} name={self.name!r} global_name={self.global_name!r} bot={self.bot}>'
 
